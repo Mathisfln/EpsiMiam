@@ -3,3 +3,7 @@ export type RestaurantCategorie = {
     name: string,
     created_at: string
 }
+
+export type RestaurantCategorieInput = {
+    name: string
+}
