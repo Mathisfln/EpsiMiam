@@ -1,23 +1,13 @@
-import { Meteor } from 'meteor/meteor'
 import React from 'react'
-
+import { Link } from 'react-router-dom'
+import RestaurantCategoriesDisplayer from '../components/RestaurantCategoriesDisplayer'
 
 const LandingPage = () => {
 
-    const createCategory = () => {
-        Meteor.call('restaurant_categories.insert', {name: "Burger"}, (error: any,data: any) =>{
-            if(error){
-                console.error(error)
-                return
-            }
-            console.log(data)
-        })
-    }
-
     return(
         <>
-            <h1>Landing Page</h1>
-            <button className="bg-black rounded text-white p-5 hover:bg-grey" onClick={createCategory}>Create category</button>
+            <h1>LANDING PAGE</h1>
+            <RestaurantCategoriesDisplayer />
         </>
     )
 }

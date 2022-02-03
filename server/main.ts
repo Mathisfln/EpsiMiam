@@ -1,21 +1,18 @@
 import { Meteor } from 'meteor/meteor';
-import { Accounts } from 'meteor/accounts-base';
-import '../imports/api/server/restaurant_categories_methods'
-import {generateDefaultRestaurantCategories} from '../imports/api/services/restaurant_categories_services'
-import { generateDefaultUser } from '/imports/api/services/users_services';
+
+
+import "../imports/api/server/restaurant_categories_methods"
+import "../imports/api/server/restaurant_methods"
+import "../imports/api/server/product_categories_methods"
+import "../imports/api/server/users_methods"
+import "../imports/api/server/restaurant_categories_publications"
+import { generateDefaultRestaurantCategories } from '../imports/services/restaurant_categories_service'
+import { generateDefaultUser } from '/imports/services/users_service';
 
 Meteor.startup(() => {
-    console.log('SERVER - Server started');
+  console.log("SERVER - Server launched")
 
-    generateDefaultRestaurantCategories();
-    generateDefaultUser();
-    // Admin init
-    const user_admin = Meteor.users.findOne();
-    if(!user_admin){
-        console.log('SERVER - First user generation....');
-        Accounts.createUser({
-            email: "admin@gmail.com",
-            password: "admin"
-        })
-    }
+  // Generate default data
+  generateDefaultRestaurantCategories()
+  generateDefaultUser()
 });
